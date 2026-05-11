@@ -1,6 +1,7 @@
 #include "Map.h"
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 
 Map::Map(int x, int y){
     this -> filas = x; 
@@ -121,4 +122,63 @@ Map::~Map(){
         delete[] MatrizAdyacencia[i];
     }
     delete[] MatrizAdyacencia;
+}
+
+int** Map::getAdjacencyMatrix(){
+
+    return MatrizAdyacencia;
+}
+
+int Map::getTotalNodes(){
+
+    return totalNodos;
+}
+
+int** Map::getGrid(){
+
+    return grid;
+}
+
+bool Map::lineOfSight(
+    int x1,
+    int y1,
+    int x2,
+    int y2
+){
+
+    int dx = x2 - x1;
+
+    int dy = y2 - y1;
+
+    int steps =
+        std::max(abs(dx), abs(dy));
+
+    float xIncrement =
+        dx / (float)steps;
+
+    float yIncrement =
+        dy / (float)steps;
+
+    float x = x1;
+
+    float y = y1;
+
+    for(int i = 0; i <= steps; i++){
+
+        int gridX = (int)x;
+
+        int gridY = (int)y;
+
+        // Obstáculo
+        if(grid[gridY][gridX] == 1){
+
+            return false;
+        }
+
+        x += xIncrement;
+
+        y += yIncrement;
+    }
+
+    return true;
 }
