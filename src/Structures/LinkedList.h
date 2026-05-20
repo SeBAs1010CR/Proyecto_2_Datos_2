@@ -19,7 +19,7 @@ public:
 
 
     // CONSTRUCTOR
-  
+
 
     LinkedList() {
 
@@ -27,7 +27,59 @@ public:
         size = 0;
     }
 
-    
+
+    // CONSTRUCTOR DE COPIA
+    LinkedList(const LinkedList& other) {
+        head = nullptr;
+        size = other.size;
+        Node<T>* curr = other.head;
+        Node<T>* tail = nullptr;
+        while (curr != nullptr) {
+            Node<T>* newNode = new Node<T>(curr->data);
+            if (head == nullptr) {
+                head = newNode;
+                tail = newNode;
+            }
+            else {
+                tail->next = newNode;
+                tail = newNode;
+            }
+            curr = curr->next;
+        }
+    }
+
+
+    // OPERADOR DE ASIGNACIÓN
+    LinkedList& operator=(const LinkedList& other) {
+        if (this == &other) return *this;
+
+        Node<T>* current = head;
+        while (current != nullptr) {
+            Node<T>* temp = current;
+            current = current->next;
+            delete temp;
+        }
+
+        head = nullptr;
+        size = other.size;
+        Node<T>* curr = other.head;
+        Node<T>* tail = nullptr;
+        while (curr != nullptr) {
+            Node<T>* newNode = new Node<T>(curr->data);
+            if (head == nullptr) {
+                head = newNode;
+                tail = newNode;
+            }
+            else {
+                tail->next = newNode;
+                tail = newNode;
+            }
+            curr = curr->next;
+        }
+        return *this;
+    }
+
+
     // INSERTAR AL FINAL
 
 
@@ -70,7 +122,7 @@ public:
         size++;
     }
 
-    
+
     // ELIMINAR
 
 
@@ -98,7 +150,7 @@ public:
         Node<T>* current = head;
 
         while (current->next != nullptr &&
-               current->next->data != data) {
+            current->next->data != data) {
 
             current = current->next;
         }
@@ -116,9 +168,9 @@ public:
         }
     }
 
-    
+
     // BUSCAR
-   
+
 
     bool contains(T data) {
 
@@ -137,27 +189,27 @@ public:
         return false;
     }
 
-    
+
     // OBTENER TAMAÑO
-   
+
 
     int getSize() {
 
         return size;
     }
 
-  
+
     // VERIFICAR SI ESTÁ VACÍA
-    
+
 
     bool isEmpty() {
 
         return head == nullptr;
     }
 
-   
+
     // OBTENER HEAD
-    
+
 
     Node<T>* getHead() {
 
@@ -166,7 +218,7 @@ public:
 
 
     // IMPRIMIR LISTA
-    
+
 
     void print() {
 
@@ -184,7 +236,7 @@ public:
 
 
     // DESTRUCTOR
-   
+
 
     ~LinkedList() {
 

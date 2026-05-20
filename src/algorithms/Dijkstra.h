@@ -1,7 +1,7 @@
 #ifndef DIJKSTRA_H
 #define DIJKSTRA_H
 
-#include "LinkedList.h"
+#include "../Structures/LinkedList.h"
 
 class Dijkstra {
 

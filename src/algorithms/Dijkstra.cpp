@@ -1,15 +1,13 @@
 #include "Dijkstra.h"
-
-#include "PriorityQueue.h"
-
+#include "../Structures/PriorityQueue.h"
+#include "../Structures/LinkedList.h"
 #include <climits>
-
 LinkedList<int> Dijkstra::shortestPath(
     int** graph,
     int totalNodes,
     int startNode,
     int destination
-){
+) {
 
 
     // ARRAYS
@@ -25,7 +23,7 @@ LinkedList<int> Dijkstra::shortestPath(
         new int[totalNodes];
 
     // Inicializar
-    for(int i = 0; i < totalNodes; i++){
+    for (int i = 0; i < totalNodes; i++) {
 
         distance[i] = INT_MAX;
 
@@ -46,16 +44,16 @@ LinkedList<int> Dijkstra::shortestPath(
 
 
     // DIJKSTRA
-  
 
-    while(!pq.isEmpty()){
+
+    while (!pq.isEmpty()) {
 
         int current =
             pq.front();
 
         pq.dequeue();
 
-        if(visited[current]){
+        if (visited[current]) {
 
             continue;
         }
@@ -63,16 +61,16 @@ LinkedList<int> Dijkstra::shortestPath(
         visited[current] = true;
 
         // Llegó
-        if(current == destination){
+        if (current == destination) {
 
             break;
         }
 
         // Revisar vecinos
-        for(int i = 0; i < totalNodes; i++){
+        for (int i = 0; i < totalNodes; i++) {
 
             // Hay conexión
-            if(graph[current][i] > 0){
+            if (graph[current][i] > 0) {
 
                 int weight =
                     graph[current][i];
@@ -81,7 +79,7 @@ LinkedList<int> Dijkstra::shortestPath(
                     distance[current] + weight;
 
                 // Mejor camino
-                if(newDistance < distance[i]){
+                if (newDistance < distance[i]) {
 
                     distance[i] =
                         newDistance;
@@ -98,16 +96,22 @@ LinkedList<int> Dijkstra::shortestPath(
         }
     }
 
+    if (distance[destination] == INT_MAX) {
+        delete[] distance;
+        delete[] visited;
+        delete[] previous;
+        return LinkedList<int>();
+    }
 
     // RECONSTRUIR RUTA
-  
+
 
     LinkedList<int> path;
 
     int current =
         destination;
 
-    while(current != -1){
+    while (current != -1) {
 
         path.insertFirst(current);
 
@@ -117,7 +121,7 @@ LinkedList<int> Dijkstra::shortestPath(
 
 
     // LIBERAR MEMORIA
-  
+
 
     delete[] distance;
 

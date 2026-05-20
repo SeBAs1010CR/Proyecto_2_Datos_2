@@ -1,57 +1,5 @@
 #include "BFS.h"
-#include "../structures/Queue.h"
-
-
-// VERIFICAR CONECTIVIDAD ////////////////
-
-
-bool BFS::esConexo(
-    int** matriz,
-    int totalNodos,
-    int nodoInicial
-){
-
-    bool* visitado =
-        new bool[totalNodos];
-
-    for(int i = 0; i < totalNodos; i++){
-
-        visitado[i] = false;
-    }
-
-    Queue<int> cola;
-
-    cola.enqueue(nodoInicial);
-
-    visitado[nodoInicial] = true;
-
-    int count = 1;
-
-    while(!cola.isEmpty()){
-
-        int actual = cola.front();
-
-        cola.dequeue();
-
-        for(int i = 0; i < totalNodos; i++){
-
-            if(matriz[actual][i] == 1 &&
-               !visitado[i]){
-
-                cola.enqueue(i);
-
-                visitado[i] = true;
-
-                count++;
-            }
-        }
-    }
-
-    delete[] visitado;
-
-    return count == totalNodos;
-}
-
+#include "../Structures/Queue.h"
 
 // SHORTEST PATH /////////////
 
