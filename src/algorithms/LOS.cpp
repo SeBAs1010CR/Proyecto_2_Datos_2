@@ -24,6 +24,7 @@ LinkedList<int> LOS::Path(
     randomPath.insert(currNode);
 
     while (true) {
+        notColision = true;
 
         while (curr_x != final_x) {
             notColision = false;
@@ -110,7 +111,7 @@ LinkedList<int> LOS::Path(
             dif_x = final_x - curr_x;
             dif_y = final_y - curr_y;
         }
-
+        notColision = true;
         while (curr_y != final_y) {
             notColision = false;
             for (int i = 0; i < totalNodes; i++) {

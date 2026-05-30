@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,17 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="algorithms\A_Star.cpp" />
     <ClCompile Include="algorithms\BFS.cpp" />
     <ClCompile Include="algorithms\Dijkstra.cpp" />
     <ClCompile Include="algorithms\LOS.cpp" />
+    <ClCompile Include="algorithms\LOS_Bullet.cpp" />
+    <ClCompile Include="bullet\bullet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map\map.cpp" />
     <ClCompile Include="Tank\tank.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithms\A_Star.h" />
     <ClInclude Include="algorithms\BFS.h" />
     <ClInclude Include="algorithms\Dijkstra.h" />
     <ClInclude Include="algorithms\LOS.h" />
+    <ClInclude Include="algorithms\LOS_Bullet.h" />
+    <ClInclude Include="bullet\bullet.h" />
     <ClInclude Include="map\map.h" />
     <ClInclude Include="Structures\LinkedList.h" />
     <ClInclude Include="Structures\Node.h" />
@@ -155,6 +161,10 @@
       <AdditionalLibraryDirectories>C:\Users\grana\Documents\SFML-3.1.0-windows-vc17-64-bit\SFML-3.1.0\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
