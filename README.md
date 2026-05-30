@@ -12,10 +12,15 @@ El proyecto incluye en su raíz una carpeta de dependencias que ya contiene todo
 
 ## Funcionamiento del juego
 
-Al iniciar la aplicación entras a un entorno de batalla multijugador con un sistema estricto de turnos. Los turnos se alternan entre bandos, y en cada fase eliges uno de tus tanques activos para realizar una acción antes de ceder el control.
+Al iniciar la aplicación entras a un entorno de batalla multijugador con un sistema estricto de turnos. Los turnos se alternan entre bandos, el jugador 1 tiene al tanque rojo y azul (siempre comienza) mientras que el jugador 2 tiene a los tanques celeste y amarillo.
 
-El manejo se realiza con el ratón de forma gráfica e intuitiva. Para mover una unidad, haces clic en la casilla de la cuadrícula que quieras alcanzar. El programa calcula automáticamente la ruta óptima usando **búsqueda en anchura** o el **algoritmo de Dijkstra**, dependiendo de la facción del tanque. En ciertos casos se activa un sistema de línea de vista aleatorio que genera un movimiento evasivo dentro del escenario.
+El manejo se realiza con el ratón de forma gráfica e intuitiva. Para mover una unidad, haces clic en la casilla del tanque y luego de la cuadrícula que quieras alcanzar. El programa calcula automáticamente la ruta óptima usando **búsqueda en anchura** o el **algoritmo de Dijkstra**, dependiendo de la facción del tanque. En ciertos casos se activa un sistema de línea de vista aleatorio que genera un movimiento evasivo dentro del escenario.
 
-Para atacar, seleccionas un objetivo con el puntero. El tanque gira sobre sí mismo hasta alcanzar el ángulo exacto determinado por trigonometría, luego dispara un proyectil. Este proyectil viaja rebotando en los obstáculos sólidos del laberinto hasta impactar a un tanque enemigo, reduciendo sus indicadores visuales de salud.
+Para atacar, seleccionae el tanque que va a atacar con click izquierdo y con click derecho seleccionas un objetivo con el puntero (no una distancia mas de dos bloques alejada del tanque). El tanque gira sobre sí mismo hasta alcanzar el ángulo exacto determinado por trigonometría, luego dispara un proyectil. Este proyectil viaja rebotando en los obstáculos sólidos del laberinto hasta impactar a un tanque enemigo, reduciendo sus indicadores visuales de salud.
 
-Justo antes de cada disparo, el sistema consulta la cola de habilidades especiales. Si el jugador tiene un modificador disponible, el ataque convencional se convierte en un **misil teledirigido** guiado por el **algoritmo A***, lo que asegura un impacto directo. Esto añade un nivel adicional de planificación táctica a las decisiones de cada turno.
+Si presionas shift en vez de disparar o mover un tanque, entonces en tu inventario se almacenará un power-up aleatorio, hay cuatro opciones.
+Doble turno (aplica al siguiente turno).
+Poder de ataque: la siguiente bala destruye automáticamente al tanque que impacta.
+Precisión de ataque: la siguiente bala va en A* esquivando todos los obstáculos y ya no tiene límite para escoger la distancia del objetivo.
+Precisión de movimiento: el porcentaje de probabilidad de usar linea vista en el movimiento se reduce a un 10%.
+Al final siempre despues de adquirir un power_up tu turno acaba y sigue el rival.
